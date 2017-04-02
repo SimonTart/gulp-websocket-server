@@ -15,8 +15,16 @@
     "websocket",
     "gulp-websocket-server"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SimonTart/gulp-websocket-server.git"
+  },
   "author": "zengxuebing",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SimonTart/gulp-websocket-server/issues"
+  },
+  "homepage": "https://github.com/SimonTart/gulp-websocket-server#readme",
   "dependencies": {
     "through2": "^2.0.3",
     "ws": "^2.2.2"
