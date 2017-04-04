@@ -29,6 +29,11 @@ function livereload(wss, message = 'file change'){
         broadcast(wss, message);
     });
 }
+
+function send(wss, message = 'file change') {
+    broadcast(wss, message);
+};
+
 function gulpWss(serverConfig) {
     serverConfig = Object.assign(defaultServerConfig, serverConfig);
     let wss = new WebSocket.Server(serverConfig, () => {
@@ -40,7 +45,8 @@ function gulpWss(serverConfig) {
     wss.on('error', err => {
         throw gulpErr(err);
     });
-    wss.livereload = wss.send = livereload.bind(wss, wss);
+    wss.livereload = livereload.bind(wss, wss);
+    wss.send = send.bind(wss,wss);
     return wss;
 }
 
