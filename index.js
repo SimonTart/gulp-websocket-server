@@ -8,14 +8,15 @@ const defaultServerConfig = {
 }
 
 function gulpErr(err) {
-    return new gutil.PluginError(PLUGIN_NAME, err);
+    return new gutil.PluginError(`${PLUGIN_NAME}:`, err);
 }
 
 function log(...args) {
-    return gutil.log(...args);
+    return gutil.log(`${PLUGIN_NAME}:`, ...args);
 }
 
 function broadcast(wss, message) {
+    log(`send a message: ${message}`)
     wss.clients.forEach(client => {
         if (client.readyState === WebSocket.OPEN) {
             client.send(message);
@@ -37,10 +38,10 @@ function send(wss, message = 'file change') {
 function gulpWss(serverConfig) {
     serverConfig = Object.assign(defaultServerConfig, serverConfig);
     let wss = new WebSocket.Server(serverConfig, () => {
-        log(PLUGIN_NAME, `has listen on ws://localhost:${serverConfig.port}${serverConfig.path}`);
+        log(`had listen on ws://localhost:${serverConfig.port}${serverConfig.path}`);
     });
     wss.on('connection', ws => {
-        log(PLUGIN_NAME, 'webscoket builds a connection');
+        log('build a connection');
     });
     wss.on('error', err => {
         throw gulpErr(err);
