@@ -1,6 +1,6 @@
 {
   "name": "gulp-websocket-server",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "gulp-websocket-server",
   "gulpplugin": "gulp-websocket-server",
   "main": "index.js",
