@@ -24,7 +24,7 @@ gulp.task('js',() => {
 ```
 websocket服务创建的配置请参考[ws](https://github.com/websockets/ws/blob/master/doc/ws.md)中的serverCofig。
 
-创建的webscoket server上有`livereload`方法,可以给客户端发送消息。
+创建的webscoket server上有`livereload`和`send`方法,都可以给客户端发送消息，但是`livereload`只能在gulp中的pipe中使用，但是`send`没有限制，可以直接使用。两者都有一个参数就是需要发送的message。这个参数的默认值是`file change`
 
 ##### 在浏览器中建立链接
 可以在浏览器中通过下面的方面建立链接，并且接收websocket server发送的消息。
