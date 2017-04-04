@@ -14,6 +14,6 @@ ws.addEventListener('error', function (err) {
 
 
 ws.addEventListener('message', function (event) {
-    console.log('receive message' + event.data + ', reload');
+    console.log('receive message: ' + event.data + ', reload');
     window.location.reload();
 })
