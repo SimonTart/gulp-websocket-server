@@ -7,8 +7,16 @@ const wss = gulpwss({
 
 gulp.task('js',()=>{
     return gulp.src('./assets/main.js')
-        .pipe(wss.livereload());
+        .pipe(wss.livereload('js change'));
 });
-gulp.watch('./assets/main.js',['js']);
 
-gulp.task('default',['js']);
+gulp.task('css', () => { 
+    console.log('css change');
+    wss.send('css change');
+});
+
+
+gulp.watch('./assets/main.js', ['js']);
+gulp.watch('./assets/index.css', ['css']);
+
+gulp.task('default', []);
